@@ -47,6 +47,7 @@ import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.SessionScope;
 import org.springframework.web.context.request.WebRequest;
 
+
 /**
  * Convenience methods for retrieving the root {@link WebApplicationContext} for
  * a given {@link ServletContext}. This is useful for programmatically accessing
@@ -181,7 +182,7 @@ public abstract class WebApplicationContextUtils {
 	 * @param sc the ServletContext that we're running within
 	 */
 	public static void registerWebApplicationScopes(ConfigurableListableBeanFactory beanFactory,
-			@Nullable ServletContext sc) {
+													@Nullable ServletContext sc) {
 
 		beanFactory.registerScope(WebApplicationContext.SCOPE_REQUEST, new RequestScope());
 		beanFactory.registerScope(WebApplicationContext.SCOPE_SESSION, new SessionScope());
@@ -219,7 +220,7 @@ public abstract class WebApplicationContextUtils {
 	 * @param servletConfig the ServletConfig
 	 */
 	public static void registerEnvironmentBeans(ConfigurableListableBeanFactory bf,
-			@Nullable ServletContext servletContext, @Nullable ServletConfig servletConfig) {
+												@Nullable ServletContext servletContext, @Nullable ServletConfig servletConfig) {
 
 		if (servletContext != null && !bf.containsBean(WebApplicationContext.SERVLET_CONTEXT_BEAN_NAME)) {
 			bf.registerSingleton(WebApplicationContext.SERVLET_CONTEXT_BEAN_NAME, servletContext);
@@ -292,7 +293,7 @@ public abstract class WebApplicationContextUtils {
 	 * @see org.springframework.core.env.ConfigurableEnvironment#getPropertySources()
 	 */
 	public static void initServletPropertySources(MutablePropertySources sources,
-			@Nullable ServletContext servletContext, @Nullable ServletConfig servletConfig) {
+												  @Nullable ServletContext servletContext, @Nullable ServletConfig servletConfig) {
 
 		Assert.notNull(sources, "'propertySources' must not be null");
 		String name = StandardServletEnvironment.SERVLET_CONTEXT_PROPERTY_SOURCE_NAME;
@@ -398,7 +399,7 @@ public abstract class WebApplicationContextUtils {
 
 	/**
 	 * Inner class to avoid hard-coded JSF dependency.
- 	 */
+	 */
 	private static class FacesDependencyRegistrar {
 
 		public static void registerFacesDependencies(ConfigurableListableBeanFactory beanFactory) {
